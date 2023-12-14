@@ -1,0 +1,6 @@
+{% block icon_field %}
+{% if field.value.icon is not null %}
+    <i class="icon-{{ field.value.icon }}"></i>
+    <img src="{{ field.value.icon }}.svg" />
+{% endif %}
+{% endblock %}
