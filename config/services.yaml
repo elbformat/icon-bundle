@@ -1,0 +1,29 @@
+services:
+  Elbformat\IbexaIconFieldtype\FieldType\Icon\Type:
+    arguments:
+      $serializer: '@eZ\Publish\SPI\FieldType\ValueSerializerInterface'
+      $validator: '@Symfony\Component\Validator\Validator\ValidatorInterface'
+    tags:
+      - { name: ezplatform.field_type, alias: icon }
+      - { name: ezplatform.field_type.form_mapper.value, fieldType: icon }
+      - { name: ezplatform.field_type.form_mapper.definition, fieldType: icon }
+
+  Elbformat\IbexaIconFieldtype\FieldType\Icon\SearchField:
+    class: '%ezpublish.fieldType.indexable.unindexed.class%'
+    tags:
+      - { name: ezplatform.field_type.indexable, alias: icon }
+
+  Elbformat\IbexaIconFieldtype\Form\Type\IconType:
+    arguments:
+      $iconSetManager: '@Elbformat\IbexaIconFieldtype\IconSet\IconSetManager'
+    tags:
+      - { name: form.type }
+  Elbformat\IbexaIconFieldtype\Form\Type\IconSettingsType:
+    arguments:
+      $iconSetManager: '@Elbformat\IbexaIconFieldtype\IconSet\IconSetManager'
+    tags:
+      - { name: form.type }
+
+  Elbformat\IbexaIconFieldtype\IconSet\IconSetManager:
+    arguments:
+      $configs: [] # Will be set from bundle config

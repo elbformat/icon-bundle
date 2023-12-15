@@ -1,0 +1,6 @@
+{% block icon_field %}
+    {{ include('@ElbformatIconFieldtype/icon.html.twig', {
+        icon: field.value.icon,
+        iconset: fieldSettings.iconset
+    }, with_context=false) }}
+{% endblock %}

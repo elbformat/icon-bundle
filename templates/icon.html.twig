@@ -1,0 +1,12 @@
+{#
+    Use this template to render a single icon (for backend and frontend)
+
+    @var icon ?string
+    @var iconset string
+#}
+{% if icon is not null %}
+    <i class="icon-{{ icon }}"></i>
+    {% if "set2" == iconset %}
+        <img src="assets/build/images/icons/{{ icon }}" />
+    {% endif %}
+{% endif %}
