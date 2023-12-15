@@ -1,5 +1,0 @@
-ezplatform:
-  system:
-    default:
-      field_templates:
-        - { template: '@ElbformatIconFieldtype/icon_field.html.twig', priority: 0 }

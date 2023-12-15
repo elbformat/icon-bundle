@@ -20,4 +20,9 @@ final class Value implements ValueInterface
     {
         return $this->icon;
     }
+
+    public function setIcon(?string $icon): void
+    {
+        $this->icon = $icon;
+    }
 }
