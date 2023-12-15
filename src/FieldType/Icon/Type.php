@@ -1,13 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Elbformat\IbexaIconFieldtype\FieldType\Icon;
+namespace Elbformat\IconBundle\FieldType\Icon;
 
-use Elbformat\IbexaIconFieldtype\Form\Type\IconSettingsType;
-use Elbformat\IbexaIconFieldtype\Form\Type\IconType;
+use Elbformat\IconBundle\Form\Type\IconSettingsType;
+use Elbformat\IconBundle\Form\Type\IconType;
 use eZ\Publish\SPI\FieldType\Generic\Type as GenericType;
-use eZ\Publish\SPI\Persistence\Content\Field;
-use eZ\Publish\SPI\Persistence\Content\Type\FieldDefinition;
 use EzSystems\EzPlatformAdminUi\FieldType\FieldDefinitionFormMapperInterface;
 use EzSystems\EzPlatformAdminUi\Form\Data\FieldDefinitionData;
 use EzSystems\EzPlatformContentForms\Data\Content\FieldData;
@@ -21,7 +19,7 @@ final class Type extends GenericType implements FieldValueFormMapperInterface, F
         return 'icon';
     }
 
-    public function mapFieldValueForm(FormInterface $fieldForm, FieldData $data)
+    public function mapFieldValueForm(FormInterface $fieldForm, FieldData $data): void
     {
         $definition = $data->fieldDefinition;
         $iconSet = $definition->getFieldSettings()['iconset'];

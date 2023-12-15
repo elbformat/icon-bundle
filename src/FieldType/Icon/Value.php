@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Elbformat\IbexaIconFieldtype\FieldType\Icon;
+namespace Elbformat\IconBundle\FieldType\Icon;
 
 use eZ\Publish\SPI\FieldType\Value as ValueInterface;
 

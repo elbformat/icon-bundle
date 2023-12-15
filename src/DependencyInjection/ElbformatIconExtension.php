@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Elbformat\IbexaIconFieldtype\DependencyInjection;
+namespace Elbformat\IconBundle\DependencyInjection;
 
-use Elbformat\IbexaIconFieldtype\IconSet\IconSetManager;
+use Elbformat\IconBundle\IconSet\IconSetManager;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -11,9 +11,9 @@ use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\Yaml\Yaml;
 
-class ElbformatIconFieldtypeExtension extends Extension implements PrependExtensionInterface
+class ElbformatIconExtension extends Extension implements PrependExtensionInterface
 {
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../../config/'));
         $loader->load('services.yaml');
@@ -25,7 +25,7 @@ class ElbformatIconFieldtypeExtension extends Extension implements PrependExtens
         $definition->setArgument('$configs', $config);
     }
 
-    public function prepend(ContainerBuilder $container)
+    public function prepend(ContainerBuilder $container): void
     {
         // Add template for rendering
         $configFile = __DIR__.'/../../config/ezplatform.yaml';

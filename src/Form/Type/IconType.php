@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Elbformat\IbexaIconFieldtype\Form\Type;
+namespace Elbformat\IconBundle\Form\Type;
 
-use Elbformat\IbexaIconFieldtype\FieldType\Icon\Value;
-use Elbformat\IbexaIconFieldtype\IconSet\IconSetManager;
+use Elbformat\IconBundle\FieldType\Icon\Value;
+use Elbformat\IconBundle\IconSet\IconSetManager;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;

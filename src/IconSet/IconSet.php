@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Elbformat\IbexaIconFieldtype\IconSet;
+namespace Elbformat\IconBundle\IconSet;
 
 class IconSet
 {
