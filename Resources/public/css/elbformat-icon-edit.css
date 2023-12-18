@@ -1,0 +1,84 @@
+/* Inspired by https://codepen.io/giannisrig/pen/ywBWOV */
+.elbformat-icon-select {
+    display: none;
+}
+.icon-dropdown-wrapper {
+    width: 100%;
+    max-width: 34.375rem;
+    height: calc(1.5em + 0.75rem + 2px);
+    position: relative;
+    border:1px solid #878b90;
+}
+    .icon-dropdown-wrapper .icon-dropdown-trigger {
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        border: 0;
+        padding: 2px 10px;
+        transition: 0.2s ease-in;
+        cursor:pointer;
+        text-align: left;
+    }
+    .icon-dropdown-wrapper .icon-dropdown-trigger::before {
+        content: '˅';
+        position: absolute;
+        top: 7px;
+        right: 10px;
+    }
+    .icon-dropdown-wrapper.open .icon-dropdown-trigger::before {
+        top: 5px;
+        right: 10px;
+        transform: rotate(180deg);
+    }
+        .icon-dropdown-wrapper .icon-dropdown-trigger .icon-container {
+            width: 50px;
+            height: 30px;
+            padding-right: 10px;
+            display: inline-block;
+        }
+
+    .icon-dropdown-wrapper .icon-dropdown-list {
+        width: 100%;
+        display:none;
+        z-index: 1;
+        position: absolute;
+        background-color: #fff;
+        left: 0;
+        top: 37px;
+        box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+        max-height: 300px;
+        overflow: scroll;
+    }
+    .icon-dropdown-wrapper.open .icon-dropdown-list {
+        display:block;
+    }
+
+        .icon-dropdown-wrapper .icon-dropdown-trigger button,
+        .icon-dropdown-wrapper .icon-dropdown-list button {
+            width: 100%;
+            height: 54px;
+            line-height: 54px;
+            border: 0;
+            padding: 2px 10px;
+            cursor: pointer;
+            transition:0.2s ease-in;
+            text-align: left;
+            overflow: hidden;
+        }
+        .icon-dropdown-wrapper .icon-dropdown-list button:hover {
+            background-color:#e5e5e5;
+        }
+        .icon-dropdown-wrapper .icon-dropdown-list button:not(:last-child){
+            border-bottom: 1px solid #e5e5e5;
+        }
+            .icon-dropdown-wrapper .icon-dropdown-list .icon-container {
+                width: 50px;
+                height: 50px;
+                padding-right: 10px;
+                display: inline-block;
+            }
+            .icon-dropdown-wrapper .icon-dropdown-trigger .icon-container img,
+            .icon-dropdown-wrapper .icon-dropdown-list .icon-container img {
+                max-width: 90%;
+                max-height: 90%;
+            }

@@ -7,5 +7,9 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class ElbformatIconBundle extends Bundle
 {
+    public function getPath(): string
+    {
+        return realpath(__DIR__.'/..');
+    }
 
 }

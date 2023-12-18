@@ -19,7 +19,7 @@ class IconSetManager
                 $items = $setConfig['items'];
             }
             if (null !== ($setConfig['folder']??null)) {
-                $finder = (new Finder())->files()->in($setConfig['folder']);
+                $finder = (new Finder())->files()->in($setConfig['folder'])->depth(0);
                 if (null !== ($setConfig['pattern']??null)) {
                     $finder = $finder->name($setConfig['pattern']);
                 }
