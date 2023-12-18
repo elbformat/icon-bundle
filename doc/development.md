@@ -1,3 +1,4 @@
+## Local development
 For local development you can use docker-compose.
 ```bash
 docker-compose run php sh
@@ -14,3 +15,21 @@ Run tests
 ```bash
 vendor/bin/phpunit
 ```
+
+## In-Place development
+If you want to test out how it integrates into ibexa, it's the easiest way to integrate the bundle into your project directly.
+By adding it as "vcs" your are able to push the changes you made right from your vendor folder.
+Add the following to your `composer.json`
+```json
+{
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/elbformat/icon-bundle"
+    }
+  ]
+}
+```
+and then run `composer require --prefer-source elbformat/icon-bundle:dev-main`.
+
+Make sure you have **git** installed inside docker, when usin a docker setup.

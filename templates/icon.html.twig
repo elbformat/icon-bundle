@@ -5,8 +5,9 @@
     @var iconset string
 #}
 {% if icon is not null %}
-    <i class="icon-{{ icon }}"></i>
     {% if "set2" == iconset %}
-        <img src="assets/build/images/icons/{{ icon }}" />
+        <img src="/assets/build/images/icons/{{ icon }}" />
+    {% else %}
+        <i class="icon-{{ icon }}"></i>
     {% endif %}
 {% endif %}
