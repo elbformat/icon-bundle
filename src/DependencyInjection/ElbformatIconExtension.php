@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Elbformat\IconBundle\DependencyInjection;
@@ -13,6 +14,7 @@ use Symfony\Component\Yaml\Yaml;
 
 class ElbformatIconExtension extends Extension implements PrependExtensionInterface
 {
+    /** @param array<mixed> $configs */
     public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../../config/'));
@@ -28,8 +30,12 @@ class ElbformatIconExtension extends Extension implements PrependExtensionInterf
     public function prepend(ContainerBuilder $container): void
     {
         // Add template for rendering
-        $configFile = __DIR__.'/../../config/ezplatform.yaml';
-        $config = Yaml::parse(file_get_contents($configFile));
+        $configFile = file_get_contents(__DIR__.'/../../config/ezplatform.yaml');
+        if (false === $configFile) {
+            throw new \RuntimeException(sprintf('%s not found or not readable', __DIR__.'/../../config/ezplatform.yaml'));
+        }
+        /** @var array{'ezplatform':array<string,mixed>} $config */
+        $config = Yaml::parse($configFile);
         $container->prependExtensionConfig('ezpublish', $config['ezplatform']);
 
         // Register namespace (as this is not done automatically. Maybe the missing "bundle" in path?)

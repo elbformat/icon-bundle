@@ -1,4 +1,6 @@
 /.idea
-vendor/
+/build
+/vendor
+.phpunit.result.cache
 composer.lock
 docker-compose.override.yml

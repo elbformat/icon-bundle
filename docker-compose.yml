@@ -4,3 +4,7 @@ services:
     image: ghcr.io/elbformat/ibexa-icon-fieldtype/php
     volumes:
       - ./:/var/www
+  phpcsfixer:
+    image: ghcr.io/elbformat/php-cs-fixer:edge-php8.2
+    volumes:
+      - ./:/code

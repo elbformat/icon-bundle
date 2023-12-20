@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Elbformat\IconBundle\DependencyInjection;
@@ -11,7 +12,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('elbformat_icon');
-
+        /** @phpstan-ignore-next-line */
         $treeBuilder->getRootNode()
             ->arrayPrototype() // Name of the set
                 ->normalizeKeys(false)

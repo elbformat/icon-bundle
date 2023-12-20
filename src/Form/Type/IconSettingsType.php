@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Elbformat\IconBundle\Form\Type;
@@ -12,11 +13,12 @@ final class IconSettingsType extends AbstractType
 {
     public function __construct(
         private readonly IconSetManager $iconSetManager,
-    ) { }
+    ) {
+    }
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add('iconset', ChoiceType::class,[
+        $builder->add('iconset', ChoiceType::class, [
             'choices' => $this->iconSetManager->getSetList()
         ]);
     }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Elbformat\IconBundle\Form\Type;
@@ -16,18 +17,18 @@ final class IconType extends AbstractType
     public function __construct(
         private readonly IconSetManager $iconSetManager,
         private readonly Environment $twig,
-    )
-    {
+    ) {
     }
 
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        /** @var string $iconSet */
         $iconSet = $options['icon_set'];
         $iconList = $this->iconSetManager->getSet($iconSet)->getList();
         $iconTemplates = [];
         foreach($iconList as $icon) {
-            $iconTemplates[$icon] = $this->twig->render('@ElbformatIconFieldtype/icon.html.twig',['icon' => $icon,'iconset' => $iconSet]);
+            $iconTemplates[$icon] = $this->twig->render('@ElbformatIconFieldtype/icon.html.twig', ['icon' => $icon,'iconset' => $iconSet]);
         }
         $builder->add('icon', ChoiceType::class, [
             'choices' => $iconList,

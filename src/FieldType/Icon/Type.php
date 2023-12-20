@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Elbformat\IconBundle\FieldType\Icon;
@@ -30,6 +31,7 @@ final class Type extends GenericType implements FieldValueFormMapperInterface, F
         ]);
     }
 
+    /** @return array{'iconset':array{'type':string,'default':string}} */
     public function getSettingsSchema(): array
     {
         return [

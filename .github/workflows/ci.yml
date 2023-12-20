@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  - pull_request
+  - push
+
+jobs:
+  php-cs-fixer:
+    name: CS Fixer
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/elbformat/php-cs-fixer:edge-php8.2
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Check src
+        run: php-cs-fixer fix --dry-run src
+      - name: Check tests
+        run: php-cs-fixer fix --dry-run tests
+
+  phpunit:
+    name: Unittest
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/elbformat/ibexa-icon-fieldtype/php
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: composer install
+      - name: Run tests
+        run: vendor/bin/phpunit
+
+  phpstan:
+    name: Static code analysis
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/elbformat/ibexa-icon-fieldtype/php
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: composer install
+      - name: Analyse
+        run: vendor/bin/phpstan
