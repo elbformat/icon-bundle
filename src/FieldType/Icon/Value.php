@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Elbformat\IconBundle\FieldType\Icon;
@@ -9,11 +10,14 @@ final class Value implements ValueInterface
 {
     private ?string $icon;
 
-    public function __construct(?string $icon=null) { $this->icon = $icon; }
+    public function __construct(?string $icon = null)
+    {
+        $this->icon = $icon;
+    }
 
     public function __toString(): string
     {
-        return $this->icon;
+        return $this->icon ?? '';
     }
 
     public function getIcon(): ?string

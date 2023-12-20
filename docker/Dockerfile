@@ -23,13 +23,12 @@ RUN apk add --no-cache --virtual .build-deps autoconf g++ make linux-headers && 
     apk del .build-deps && \
     rm -rf /tmp/*
 
-# ext-gd
-RUN apk add --no-cache libpng libjpeg-turbo freetype && \
-    apk add --no-cache --virtual .build-deps libpng-dev libjpeg-turbo-dev freetype-dev && \
-    docker-php-ext-configure gd && \
-    docker-php-ext-install gd && \
+# pcov
+RUN apk add --no-cache --virtual .build-deps autoconf g++ make && \
+    pecl install pcov-1.0.11 && \
     apk del .build-deps && \
-    rm -rf /tmp/*
+    rm -rf /tmp/* &&\
+    docker-php-ext-enable pcov
 
 RUN rmdir /var/www/html
 WORKDIR /var/www

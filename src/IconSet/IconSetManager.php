@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Elbformat\IconBundle\IconSet;
@@ -8,19 +9,19 @@ use Symfony\Component\Finder\Finder;
 class IconSetManager
 {
     /** @var array<string,IconSet> */
-    protected array $sets;
+    protected array $sets = [];
 
-    /** array<string,array{?items:string[],?folder:string,?pattern:string} */
+    /** @param array<string,array{'items'?:string[],'folder'?:string,'pattern'?:string}> $configs */
     public function __construct(array $configs)
     {
         foreach ($configs as $setName => $setConfig) {
             $items = [];
-            if (null !== ($setConfig['items']??null)) {
+            if (null !== ($setConfig['items'] ?? null)) {
                 $items = $setConfig['items'];
             }
-            if (null !== ($setConfig['folder']??null)) {
-                $finder = (new Finder())->files()->in($setConfig['folder'])->depth(0);
-                if (null !== ($setConfig['pattern']??null)) {
+            if (null !== ($setConfig['folder'] ?? null)) {
+                $finder = (new Finder())->files()->in($setConfig['folder'])->depth(0)->sortByName();
+                if (null !== ($setConfig['pattern'] ?? null)) {
                     $finder = $finder->name($setConfig['pattern']);
                 }
                 foreach ($finder as $file) {
@@ -40,11 +41,12 @@ class IconSetManager
     }
 
     /** @return array<string,string> */
-    public function getSetList():array
+    public function getSetList(): array
     {
         // Convert to string => string array
         $sets = array_flip(array_keys($this->sets));
-        array_walk($sets, fn(&$val, $key) => $val = $key);
+        /** @var array<string,string> $sets */
+        array_walk($sets, fn (&$val, $key) => $val = $key);
         return $sets;
     }
 }

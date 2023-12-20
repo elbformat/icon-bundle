@@ -16,6 +16,17 @@ Run tests
 vendor/bin/phpunit
 ```
 
+Run static code analysis
+```bash
+vendor/bin/phpstan
+```
+
+Fix styles (from outside the container)
+```bash
+docker-compose run phpcsfixer fix src
+docker-compose run phpcsfixer fix tests
+```
+
 ## In-Place development
 If you want to test out how it integrates into ibexa, it's the easiest way to integrate the bundle into your project directly.
 By adding it as "vcs" your are able to push the changes you made right from your vendor folder.
