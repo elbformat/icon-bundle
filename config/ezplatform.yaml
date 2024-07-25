@@ -2,6 +2,6 @@ ezplatform:
   system:
     default:
       field_templates:
-        - { template: '@ElbformatIconFieldtype/icon_field.html.twig', priority: 0 }
+        - { template: '@ElbformatIcon/icon_field.html.twig', priority: 0 }
       fielddefinition_edit_templates:
-        - { template: '@ElbformatIconFieldtype/icon_field_type_definition.html.twig', priority: 0 }
+        - { template: '@ElbformatIcon/icon_field_type_definition.html.twig', priority: 0 }

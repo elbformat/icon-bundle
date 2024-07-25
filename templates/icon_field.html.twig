@@ -1,7 +1,7 @@
 {% block icon_field %}
     <div class="elbformat-icon">
         <div class="icon-container">
-            {{ include('@ElbformatIconFieldtype/icon.html.twig', {
+            {{ include('@ElbformatIcon/icon.html.twig', {
                 icon: field.value.icon,
                 iconset: fieldSettings.iconset
             }, with_context=false) }}

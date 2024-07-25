@@ -38,9 +38,6 @@ class ElbformatIconExtension extends Extension implements PrependExtensionInterf
         $config = Yaml::parse($configFile);
         $container->prependExtensionConfig('ezpublish', $config['ezplatform']);
 
-        // Register namespace (as this is not done automatically. Maybe the missing "bundle" in path?)
-        $container->prependExtensionConfig('twig', ['paths' => [__DIR__.'/../../templates' => 'ElbformatIconFieldtype']]);
-
         // Register translations (as this is not done automatically. Maybe the missing "bundle" in path?)
         $container->prependExtensionConfig('framework', ['translator' => ['paths' => [__DIR__.'/../../translations']]]);
 

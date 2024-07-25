@@ -28,7 +28,7 @@ final class IconType extends AbstractType
         $iconList = $this->iconSetManager->getSet($iconSet)->getList();
         $iconTemplates = [];
         foreach($iconList as $icon) {
-            $iconTemplates[$icon] = $this->twig->render('@ElbformatIconFieldtype/icon.html.twig', ['icon' => $icon,'iconset' => $iconSet]);
+            $iconTemplates[$icon] = $this->twig->render('@ElbformatIcon/icon.html.twig', ['icon' => $icon,'iconset' => $iconSet]);
         }
         $builder->add('icon', ChoiceType::class, [
             'choices' => $iconList,
