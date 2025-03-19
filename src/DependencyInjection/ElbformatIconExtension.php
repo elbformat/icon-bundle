@@ -6,6 +6,7 @@ namespace Elbformat\IconBundle\DependencyInjection;
 
 use Elbformat\IconBundle\IconSet\IconSetManager;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\Config\Resource\FileResource;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
@@ -30,16 +31,17 @@ class ElbformatIconExtension extends Extension implements PrependExtensionInterf
     public function prepend(ContainerBuilder $container): void
     {
         // Add template for rendering
-        $configFile = file_get_contents(__DIR__.'/../../config/ezplatform.yaml');
-        if (false === $configFile) {
-            throw new \RuntimeException(sprintf('%s not found or not readable', __DIR__.'/../../config/ezplatform.yaml'));
+        $ibexaConfigFileName = __DIR__.'/../../config/ibexa.yaml';
+        $ibexaConfigFile = file_get_contents($ibexaConfigFileName);
+        if (false === $ibexaConfigFile) {
+            throw new \RuntimeException(sprintf('%s not found or not readable', $ibexaConfigFileName));
         }
-        /** @var array{'ezplatform':array<string,mixed>} $config */
-        $config = Yaml::parse($configFile);
-        $container->prependExtensionConfig('ezpublish', $config['ezplatform']);
+        /** @var array{'ibexa':array<string,mixed>} $ibexaConfig */
+        $ibexaConfig = Yaml::parse($ibexaConfigFile);
+        $container->prependExtensionConfig('ibexa', $ibexaConfig['ibexa']);
+        $container->addResource(new FileResource($ibexaConfigFileName));
 
         // Register translations (as this is not done automatically. Maybe the missing "bundle" in path?)
         $container->prependExtensionConfig('framework', ['translator' => ['paths' => [__DIR__.'/../../translations']]]);
-
     }
 }

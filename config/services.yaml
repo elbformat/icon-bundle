@@ -4,14 +4,14 @@ services:
       $serializer: '@eZ\Publish\SPI\FieldType\ValueSerializerInterface'
       $validator: '@Symfony\Component\Validator\Validator\ValidatorInterface'
     tags:
-      - { name: ezplatform.field_type, alias: icon }
-      - { name: ezplatform.field_type.form_mapper.value, fieldType: icon }
-      - { name: ezplatform.field_type.form_mapper.definition, fieldType: icon }
+      - { name: ibexa.field_type, alias: icon }
+      - { name: ibexa.admin_ui.field_type.form.mapper.value, fieldType: icon }
+      - { name: ibexa.admin_ui.field_type.form.mapper.definition, fieldType: icon }
 
   Elbformat\IconBundle\FieldType\Icon\SearchField:
-    class: '%ezpublish.fieldType.indexable.unindexed.class%'
+    class: 'Ibexa\Core\FieldType\Unindexed'
     tags:
-      - { name: ezplatform.field_type.indexable, alias: icon }
+      - { name: ibexa.field_type.indexable, alias: icon }
 
   Elbformat\IconBundle\Form\Type\IconType:
     arguments:

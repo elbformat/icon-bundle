@@ -1,60 +1,21 @@
-// Inspired by https://codepen.io/giannisrig/pen/ywBWOV
 window.addEventListener('load', function() {
-   document.querySelectorAll('.elbformat-icon-select').forEach((iconDropdown) => {
-      // Hidden field to carry the form data
-      let hiddenField = document.createElement('input');
-      hiddenField.setAttribute('type','hidden');
-      hiddenField.setAttribute('name', iconDropdown.getAttribute('name'));
-      let value = iconDropdown.value || '';
-      hiddenField.setAttribute('value', value);
-      iconDropdown.after(hiddenField);
+   // Find list entries
+   document.querySelectorAll('.elbformat-icon-select').forEach((iconDropdownEntry) => {
+      let value = iconDropdownEntry.value || '';
+      let iconMarkup =  iconDropdownEntry.getAttribute('data-markup');
+      let li = iconDropdownEntry.closest('.ibexa-dropdown').querySelector('.ibexa-dropdown__item[data-value="'+value+'"]');
 
-      // Wrapper for new widget
-      let wrapper = document.createElement('div');
-      wrapper.classList.add('icon-dropdown-wrapper');
-      iconDropdown.after(wrapper);
+      // Create a span with icon
+      let wrapper = document.createElement('span');
+      wrapper.classList.add('ibexa-icon');
+      wrapper.classList.add('ibexa-icon--small');
+      wrapper.innerHTML =iconMarkup;
 
-      let button = document.createElement('button');
-      button.classList.add('icon-dropdown-trigger');
-      wrapper.appendChild(button);
-      let iconList = document.createElement('div');
-      iconList.classList.add('icon-dropdown-list');
-      wrapper.appendChild(iconList);
+      // Insert before the label
+      let label = li.querySelector('.ibexa-dropdown__item-label');
+      li.insertBefore(wrapper, label);
 
-      // Extract icons
-      let items = JSON.parse(iconDropdown.getAttribute('data-choices'));
-      for (const [key, tmpl] of Object.entries(items)) {
-         let container = document.createElement('button');
-         container.setAttribute('value', key)
-         let iconContainer = document.createElement('div');
-         iconContainer.classList.add('icon-container');
-         iconContainer.innerHTML = tmpl;
-         container.appendChild(iconContainer);
-         container.innerHTML+=key
-         iconList.appendChild(container);
-         if (value===key) {
-            button.innerHTML = container.innerHTML;
-         }
-         // Click on entry
-         container.addEventListener('click',(e) => {
-            button.innerHTML = container.innerHTML;
-            hiddenField.value = key;
-            wrapper.classList.remove('open');
-            e.preventDefault();
-            return false;
-         });
-      };
-
-      // Open/Close
-      button.addEventListener('click',(e) => {
-         if (wrapper.classList.contains('open')) {
-            wrapper.classList.remove('open');
-         } else {
-            wrapper.classList.add('open');
-         }
-         e.preventDefault();
-         return false;
-      });
+      // @todo also update the selected choice with an icon
    });
 
 });

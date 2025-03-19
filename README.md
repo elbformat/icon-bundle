@@ -26,7 +26,7 @@ elbformat_icon:
     - clock
     - house 
   iconset2:
-    folder: "vendor/ezsystems/ezplatform-admin-ui/src/bundle/Resources/public/img/icons"
+    folder: "vendor/ibexa/admin-ui/src/bundle/Resources/public/img/icons"
 ```
 See [configuration](doc/configuration.md) for more advanced examples
 
