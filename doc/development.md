@@ -1,7 +1,7 @@
 ## Local development
 For local development you can use docker-compose.
 ```bash
-docker-compose run php sh
+docker compose run php sh
 composer install
 ```
 
@@ -23,8 +23,8 @@ vendor/bin/phpstan
 
 Fix styles (from outside the container)
 ```bash
-docker-compose run phpcsfixer fix src
-docker-compose run phpcsfixer fix tests
+docker compose run phpcsfixer fix src
+docker compose run phpcsfixer fix tests
 ```
 
 ## In-Place development

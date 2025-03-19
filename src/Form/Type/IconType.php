@@ -26,17 +26,15 @@ final class IconType extends AbstractType
         /** @var string $iconSet */
         $iconSet = $options['icon_set'];
         $iconList = $this->iconSetManager->getSet($iconSet)->getList();
-        $iconTemplates = [];
+        $attr = [];
         foreach($iconList as $icon) {
-            $iconTemplates[$icon] = $this->twig->render('@ElbformatIcon/icon.html.twig', ['icon' => $icon,'iconset' => $iconSet]);
+            $iconMarkup = $this->twig->render('@ElbformatIcon/icon.html.twig', ['icon' => $icon, 'iconset' => $iconSet]);
+            $attr[$icon] = ['class' => 'elbformat-icon-select', 'data-markup' => $iconMarkup];
         }
         $builder->add('icon', ChoiceType::class, [
             'choices' => $iconList,
+            'choice_attr' => $attr,
             'label' => false,
-            'attr' => [
-                'class' => 'elbformat-icon-select',
-                'data-choices' => json_encode($iconTemplates)
-            ]
         ]);
     }
 

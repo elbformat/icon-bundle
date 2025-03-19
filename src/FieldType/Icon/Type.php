@@ -6,11 +6,11 @@ namespace Elbformat\IconBundle\FieldType\Icon;
 
 use Elbformat\IconBundle\Form\Type\IconSettingsType;
 use Elbformat\IconBundle\Form\Type\IconType;
-use eZ\Publish\SPI\FieldType\Generic\Type as GenericType;
-use EzSystems\EzPlatformAdminUi\FieldType\FieldDefinitionFormMapperInterface;
-use EzSystems\EzPlatformAdminUi\Form\Data\FieldDefinitionData;
-use EzSystems\EzPlatformContentForms\Data\Content\FieldData;
-use EzSystems\EzPlatformContentForms\FieldType\FieldValueFormMapperInterface;
+use Ibexa\AdminUi\FieldType\FieldDefinitionFormMapperInterface;
+use Ibexa\AdminUi\Form\Data\FieldDefinitionData;
+use Ibexa\Contracts\ContentForms\Data\Content\FieldData;
+use Ibexa\Contracts\ContentForms\FieldType\FieldValueFormMapperInterface;
+use Ibexa\Contracts\Core\FieldType\Generic\Type as GenericType;
 use Symfony\Component\Form\FormInterface;
 
 final class Type extends GenericType implements FieldValueFormMapperInterface, FieldDefinitionFormMapperInterface

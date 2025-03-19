@@ -6,7 +6,7 @@
 #}
 {% if icon is not null %}
     {% if "set2" == iconset %}
-        <img src="/assets/build/images/icons/{{ icon }}" />
+        <img src="{{ asset("build/images/icons/") ~ icon  }}" />
     {% else %}
         <i class="icon-{{ icon }}"></i>
     {% endif %}

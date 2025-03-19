@@ -1,12 +1,12 @@
-.ez-content-preview .elbformat-icon {
+.ibexa-content-preview .elbformat-icon {
     text-align: left;
 }
-    .ez-content-preview .elbformat-icon .icon-container {
+    .ibexa-content-preview .elbformat-icon .icon-container {
         height: 18px;
         width: 30px;
         display: inline-block;
     }
-        .ez-content-preview .elbformat-icon .icon-container img {
+        .ibexa-content-preview .elbformat-icon .icon-container img {
             max-height: 90%;
             max-width: 90%;
         }
