@@ -5,12 +5,17 @@ declare(strict_types=1);
 namespace Elbformat\IconBundle\Tests\IconSet;
 
 use Elbformat\IconBundle\IconSet\IconSetManager;
-use http\Exception\InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 class IconSetManagerTest extends TestCase
 {
-    /** @dataProvider validConfigsProvider */
+    /**
+     * @dataProvider validConfigsProvider
+     *
+     * @param array<string,array{'items'?:string[],'folder'?:string,'pattern'?:string}> $config
+     * @param array<string,string>                                                      $setList
+     * @param array<string,string>|null                                                 $iconList
+     */
     public function testValidConfigs(array $config, array $setList, ?string $setName = null, ?array $iconList = null): void
     {
         $ism = new IconSetManager($config);
@@ -31,7 +36,7 @@ class IconSetManagerTest extends TestCase
         ];
         // Multiple lists
         yield [
-            ['set1' => ['items' => ['entry1', 'entry2']],'set2' => []],
+            ['set1' => ['items' => ['entry1', 'entry2']], 'set2' => []],
             ['set1' => 'set1', 'set2' => 'set2'],
             'set2',
             [],

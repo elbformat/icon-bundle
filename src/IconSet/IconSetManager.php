@@ -37,6 +37,7 @@ class IconSetManager
         if (!isset($this->sets[$name])) {
             throw new \InvalidArgumentException('IconSet not found');
         }
+
         return $this->sets[$name];
     }
 
@@ -44,9 +45,8 @@ class IconSetManager
     public function getSetList(): array
     {
         // Convert to string => string array
-        $sets = array_flip(array_keys($this->sets));
-        /** @var array<string,string> $sets */
-        array_walk($sets, fn (&$val, $key) => $val = $key);
-        return $sets;
+        $names = array_keys($this->sets);
+
+        return array_combine($names, $names);
     }
 }

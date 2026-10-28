@@ -1,7 +1,9 @@
 /.idea
 /build
+/var
 /vendor
-.phpunit.result.cache
+auth.json
 composer.lock
 docker-compose.override.yml
-auth.json
+.php-cs-fixer.cache
+.phpunit.result.cache

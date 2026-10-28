@@ -11,7 +11,7 @@ class ElbformatIconBundle extends Bundle
     public function getPath(): string
     {
         $path = realpath(__DIR__.'/..');
+
         return false !== $path ? $path : __DIR__.'/..';
     }
-
 }

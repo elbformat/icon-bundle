@@ -14,7 +14,7 @@ class IconSet
     {
         // Convert to string => string array
         $this->items = array_flip($items);
-        array_walk($this->items, fn (&$val, $key) => $val = $key);
+        array_walk($this->items, static fn (&$val, $key) => $val = $key);
     }
 
     /** @return string[] */
