@@ -20,14 +20,13 @@ final class IconType extends AbstractType
     ) {
     }
 
-
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         /** @var string $iconSet */
         $iconSet = $options['icon_set'];
         $iconList = $this->iconSetManager->getSet($iconSet)->getList();
         $attr = [];
-        foreach($iconList as $icon) {
+        foreach ($iconList as $icon) {
             $iconMarkup = $this->twig->render('@ElbformatIcon/icon.html.twig', ['icon' => $icon, 'iconset' => $iconSet]);
             $attr[$icon] = ['class' => 'elbformat-icon-select', 'data-markup' => $iconMarkup];
         }

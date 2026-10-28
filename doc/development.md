@@ -1,8 +1,7 @@
 ## Local development
-For local development you can use docker-compose.
+For local development you can use docker compose together with make.
 ```bash
-docker compose run php sh
-composer install
+docker compose run --rm php composer install
 ```
 
 Enable xdebug inside the container
@@ -13,18 +12,27 @@ export XDEBUG_MODE="debug"
 
 Run tests
 ```bash
-vendor/bin/phpunit
+make phpunit
 ```
 
-Run static code analysis
+Run phpstan
 ```bash
-vendor/bin/phpstan
+make phpstan
 ```
 
-Fix styles (from outside the container)
+Fix code styles
 ```bash
-docker compose run phpcsfixer fix src
-docker compose run phpcsfixer fix tests
+make php-cs-fixer
+```
+
+Open a shell
+```bash
+make shell
+```
+
+To test against a specific Ibexa version (like the CI matrix does), run
+```bash
+docker compose run --rm php composer require -W ibexa/core:"5.0.*" ibexa/admin-ui:"5.0.*"
 ```
 
 ## In-Place development

@@ -19,7 +19,7 @@ final class IconSettingsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add('iconset', ChoiceType::class, [
-            'choices' => $this->iconSetManager->getSetList()
+            'choices' => $this->iconSetManager->getSetList(),
         ]);
     }
 }

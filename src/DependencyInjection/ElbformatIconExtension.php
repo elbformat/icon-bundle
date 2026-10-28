@@ -34,7 +34,7 @@ class ElbformatIconExtension extends Extension implements PrependExtensionInterf
         $ibexaConfigFileName = __DIR__.'/../../config/ibexa.yaml';
         $ibexaConfigFile = file_get_contents($ibexaConfigFileName);
         if (false === $ibexaConfigFile) {
-            throw new \RuntimeException(sprintf('%s not found or not readable', $ibexaConfigFileName));
+            throw new \RuntimeException(\sprintf('%s not found or not readable', $ibexaConfigFileName));
         }
         /** @var array{'ibexa':array<string,mixed>} $ibexaConfig */
         $ibexaConfig = Yaml::parse($ibexaConfigFile);

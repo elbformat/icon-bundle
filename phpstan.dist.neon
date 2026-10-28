@@ -1,0 +1,12 @@
+parameters:
+    level: max
+    paths:
+        - src/
+        - tests/
+    treatPhpDocTypesAsCertain: false
+    ignoreErrors:
+        # FieldData::getFieldDefinition() only exists since Ibexa 5. Magic property access works in both versions.
+        -
+            identifier: property.protected
+            path: src/FieldType/Icon/Type.php
+            reportUnmatched: false
