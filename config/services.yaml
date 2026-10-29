@@ -1,7 +1,7 @@
 services:
   Elbformat\IconBundle\FieldType\Icon\Type:
     arguments:
-      $serializer: '@eZ\Publish\SPI\FieldType\ValueSerializerInterface'
+      $serializer: '@Ibexa\Contracts\Core\FieldType\ValueSerializerInterface'
       $validator: '@Symfony\Component\Validator\Validator\ValidatorInterface'
     tags:
       - { name: ibexa.field_type, alias: icon }
